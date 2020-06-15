@@ -28,7 +28,7 @@ class BcTrtisArmLibsConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     default_user = "trtis"
-    #default_channel = "bc"
+    default_channel = "bc"
 
     # configuration where to take sources
     src_repo_url = "ssh://git@git-srv:2222/BriefCam/tensorrt-inference-server.git"
