@@ -22,13 +22,13 @@ class BcTrtisArmLibsConan(ConanFile):
     name = "trtis-third-party-arm"
     version = "trtis-arm-v1.12.0"
     license = "UNLICENSED"
-    url = "http://bc-artifactory01/artifactory/api/conan/bc"
-    description = "external libraries for nvidia TensortRT inference server "
+    url = "https://github.com/TOVAMR/bc_conan_test.git"
+    description = "external libraries for nvidia tis build for arm"
     topics = ("grpc" , "curl", "libevent", "libevhtp", "protobuf")
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     default_user = "trtis"
-    default_channel = "bc"
+    #default_channel = "bc"
 
     # configuration where to take sources
     src_repo_url = "ssh://git@git-srv:2222/BriefCam/tensorrt-inference-server.git"
@@ -41,16 +41,16 @@ class BcTrtisArmLibsConan(ConanFile):
     def _configure_cmake(self):
         cmake = CMake(self)
         cmake.definitions["TRTIS_ENABLE_METRICS"]="OFF"
-        cmake.definitions["TRTIS_ENABLE_TRACING"]="ON"
+        cmake.definitions["TRTIS_ENABLE_TRACING"]="OFF"
         cmake.definitions["TRTIS_ENABLE_GCS"]="OFF"
         cmake.definitions["TRTIS_ENABLE_S3"]="OFF"
         cmake.definitions["TRTIS_ENABLE_CUSTOM"]="ON"
         cmake.definitions["TRTIS_ENABLE_TENSORFLOW"]="OFF"
-        cmake.definitions["TRTIS_ENABLE_TENSORRT"]="ON"
+        cmake.definitions["TRTIS_ENABLE_TENSORRT"]="OFF"
         cmake.definitions["TRTIS_ENABLE_CAFFE2"]="OFF"
         cmake.definitions["TRTIS_ENABLE_ONNXRUNTIME"]="OFF"
         cmake.definitions["TRTIS_ENABLE_ONNXRUNTIME_OPENVINO"]="OFF"
-        cmake.definitions["TRTIS_ENABLE_HTTP"]="ON"
+        cmake.definitions["TRTIS_ENABLE_HTTP"]="OFF"
         cmake.definitions["TRTIS_ENABLE_GPU"]="ON"
         cmake.definitions["TRTIS_ENABLE_PYTORCH"]="OFF"
         cmake.configure(source_folder="./build")        
